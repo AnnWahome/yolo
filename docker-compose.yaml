@@ -1,4 +1,8 @@
-#This file builds the Docker images for a React/NodeJS application and runs it as microservices on Docker containers
+#This is the configuration script for Docker Compose
+
+#This file sets up a full-stack application using Docker Compose, with three services: 
+#a React frontend, a Node.js backend, and a MongoDB database. 
+#The services are connected via a custom network and use persistent storage for the database.
 
 #To ensure successful execution, clone this entire repository and execute this file while in the root folder of the cloned repository
 
@@ -6,29 +10,31 @@
 
 #To launch this app without having to clone the entire repository,use the docker-compose.yaml file to run the app
 
+#These container images have also been pushed to Docker Hub.
+
 version: "3.8"
 
 services:
 
   #Builds the frontend Docker image and creates the frontend microservice
-  brian-yolo-client:
-    image: brianbwire/brian-yolo-client:v1.0.0
+  ann-yolo-client:
+    image: annsonnie1/ann-yolo-client:v1.0.0
     build: ./client
-    container_name: brian-yolo-client
+    container_name: ann-yolo-client
     stdin_open: true
     tty: true
     ports:
       - "3000:3000"
     depends_on: 
-      - brian-yolo-backend
+      - ann-yolo-backend
     networks:
       - app-net
 
   #Builds the backend Docker image and creates the backend microservice
-  brian-yolo-backend:
-    image: brianbwire/brian-yolo-backend:v1.0.0
+  ann-yolo-backend:
+    image: annsonnie1/ann-yolo-backend:v1.0.0
     build: ./backend
-    container_name: brian-yolo-backend
+    container_name: ann-yolo-backend
     stdin_open: true
     tty: true
     restart: always
@@ -41,7 +47,7 @@ services:
 
   #Creates the database microservice
   app-ip-mongo:
-    image: mongo
+    image: mongo:latest
     container_name: app-mongo
     ports:
       - "27017:27017"
