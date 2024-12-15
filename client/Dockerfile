@@ -24,5 +24,5 @@ COPY --from=build /usr/src/app /app
 # Expose the port the app runs on
 EXPOSE 3000
 
-# Define the command to run your app
+# Define the command to run the application
 CMD ["npm", "start"]
