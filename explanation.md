@@ -1,3 +1,47 @@
+Current IP.
+---
+To setup the provisioning and deployment using Ansible and docker, you will follow the steps below. 
+
+## Explanation of Roles and Tasks
+
+This project uses Ansible playbooks and roles to automate the deployment of a full-stack YOLO e-commerce application on a Vagrant-managed virtual machine. 
+Below is a detailed explanation of each component.
+
+### Vagrantfile
+- **Purpose**: Provisions an Ubuntu 20.04 virtual machine using the `geerlingguy/ubuntu2004` box.
+- **Key Configurations**:
+  - Port forwarding maps the host's port 3000 to the guest's port 3000 for frontend access.
+  - The virtual machine is allocated 1024 MB of memory and 1 CPU.
+  - Ansible provisioning automatically runs `playbook.yml` to set up the environment.
+
+### playbook.yml
+- **Purpose**: Main playbook to orchestrate the deployment.
+- **Roles**:
+  - `frontend-deployment`: Deploys the frontend.
+  - `setup-mongodb`: Sets up the MongoDB database.
+  - `backend-deployment`: Deploys the backend.
+
+### Roles
+
+#### Role: frontend-deployment
+- **Task: Pull frontend Docker image**
+  - Uses `docker_container` to pull and start the frontend service.
+  - Maps port 3000 on the host to port 3000 in the container.
+  - Container name: `ann-yolo-client`.
+
+#### Role: setup-mongodb
+- **Task: Pull MongoDB Docker image**
+  - Uses `docker_container` to pull and start the MongoDB service.
+  - Maps port 27017 on the host to port 27017 in the container.
+  - Uses a volume `app-mongo-data` to persist database data.
+  - Container name: `app-mongo`.
+
+#### Role: backend-deployment
+- **Task: Pull backend Docker image**
+  - Uses `docker_container` to pull and start the backend service.
+  -
+.......................................................................................
+Ignore the below since it was used to explain the previous IP.
 ### 1. Choice of Base Image
 
 For the containerized application, the following base images were chosen:
@@ -219,5 +263,7 @@ Persisted data from the function of adding products to the mongodb.
 
 
 
----
+
+
+
 
