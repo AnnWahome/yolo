@@ -1,0 +1,3 @@
+container_name: ann-yolo-client
+network: app-net
+volume: app-mongo-data/app

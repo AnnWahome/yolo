@@ -1,4 +1,1 @@
 ---
-container_name: brian-yolo-backend
-network: app-net
-volume: app-mongo-data/app
