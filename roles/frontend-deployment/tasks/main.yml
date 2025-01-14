@@ -1,0 +1,8 @@
+---
+- name: Pull frontend Docker image
+  docker_container:
+    name: ann-yolo-client
+    image: annsonnie1/ann-yolo-client:v1.0.0
+    state: started
+    ports:
+      - "3000:3000"
