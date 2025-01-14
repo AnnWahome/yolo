@@ -32,7 +32,8 @@ This command provisions the virtual machine and runs playbook.yml to deploy the 
 - Backend API: http://localhost:5000
 
 ### Project structure
-'''
+
+```
 yolo-project/
 ├── roles/              # Ansible roles directory
 │   ├── setup-mongodb/
@@ -50,10 +51,10 @@ yolo-project/
 │       │   └── main.yml
 │       └── vars/
 │           └── main.yml
-└── playbook.yml            # Main Ansible playbook
-│
-└── Vagrantfile              # Vagrant configuration file
-'''
+└── playbook.yml        # Main Ansible playbook
+└── Vagrantfile         # Vagrant configuration file
+```
+
 
 ## Explanation of Roles
 
