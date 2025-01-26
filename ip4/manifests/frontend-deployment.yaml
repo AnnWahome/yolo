@@ -1,0 +1,56 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: ann-yolo-client
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       app: ann-yolo-client
+#   template:
+#     metadata:
+#       labels:
+#         app: ann-yolo-client
+#     spec:
+#       containers:
+#       - name: ann-yolo-client
+#         image: annsonnie1/ann-yolo-client:v1.0.0
+#         resources:
+#           limits:
+#             memory: "128Mi"
+#             cpu: "500m"
+#         ports:
+#         - containerPort: 3000
+#         env:
+#         - name: REACT_APP_API_URL
+#           value: "http://ann-yolo-backend:5000"
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ann-yolo-client
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ann-yolo-client
+  template:
+    metadata:
+      labels:
+        app: ann-yolo-client
+    spec:
+      containers:
+      - name: ann-yolo-client
+        image: annsonnie1/ann-yolo-client:v1.0.0@sha256:8906017d424f350712bf833acb4cdd1616a43121a9d99cc9855547634ca769f1
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "10m"
+          limits:
+            memory: "200Mi"
+            cpu: "50m"
+        ports:
+        - containerPort: 3000
+        env:
+        - name: REACT_APP_API_URL
+          value: "http://ann-yolo-backend:5000"
