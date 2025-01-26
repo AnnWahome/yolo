@@ -1,0 +1,55 @@
+# apiVersion: apps/v1
+# kind: StatefulSet
+# metadata:
+#   name: database-statefulset
+# spec:
+#   selector:
+#     matchLabels:
+#       app: yolo-mongo
+#   serviceName: "yolo-mongo"
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app: yolo-mongo
+#     spec:
+#       containers:
+#       - name: yolo-mongo
+#         image: annsonnie1/yolo-mongo:latest
+#         ports:
+#         - containerPort: 27017
+#         volumeMounts:
+#         - name: amongo-storage
+#           mountPath: /data/db
+#       volumes:
+#       - name: mongo-storage
+#         persistentVolumeClaim:
+#           claimName: mongo-pvc
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: database-statefulset
+spec:
+  selector:
+    matchLabels:
+      app: yolo-mongo
+  serviceName: "yolo-mongo"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: yolo-mongo
+    spec:
+      containers:
+      - name: yolo-mongo
+        image: annsonnie1/yolo-mongo:latest@sha256:d97c9753edfc4a6e315b27429fcca4c8e6a4cbb4447c7aa7c0dea68d659cd0c6
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongo-storage  # Corrected volume mount name
+          mountPath: /data/db
+      volumes:
+      - name: mongo-storage
+        persistentVolumeClaim:
+          claimName: mongo-pvc
