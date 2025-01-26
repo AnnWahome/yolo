@@ -1,0 +1,57 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: ann-yolo-backend
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       app: ann-yolo-backend
+#   template:
+#     metadata:
+#       labels:
+#         app: ann-yolo-backend
+#     spec:
+#       containers:
+#       - name: ann-yolo-backend
+#         image: annsonnie1/ann-yolo-backend:v1.0.0
+#         resources:
+#           limits:
+#             memory: "128Mi"
+#             cpu: "500m"
+#         ports:
+#         - containerPort: 5000
+#         env:
+#         - name: yolo-mongo
+#           value: "mongodb://yolo-mongo:27017/mydatabase"
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ann-yolo-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ann-yolo-backend
+  template:
+    metadata:
+      labels:
+        app: ann-yolo-backend
+    spec:
+      containers:
+      - name: ann-yolo-backend
+        image: annsonnie1/ann-yolo-backend:v1.0.0@sha256:f2336d70efcca12838aaef01cab6b54e640bd9c1b84530d8e369ff6e121375ba
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "10m"
+          limits:
+            memory: "200Mi"
+            cpu: "50m"
+        ports:
+        - containerPort: 5000
+        env:
+        - name: MONGO_URI  # Corrected environment variable name
+          value: "mongodb://yolo-mongo:27017/mydatabase"
