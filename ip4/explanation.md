@@ -37,5 +37,22 @@ I followed semantic versioning for my Docker images (e.g., `ann-yolo-backend:v1.
 `mongo:latest`). This made it easy to track different versions of the application. I also
 ensured consistency across all image names by prefixing them with my Docker Hub username(e.g.,`annsonnie1/ann-yolo-backend:v1.0.0`)
 
+## 7. Project Folder structure
+The docker-compose.yaml file in the root folder of yolo was used to create the containerized imagesimages and then images pushed to docker hub.
+
+yolo/ip4
+
+├── manifests/  
+│   ├── backend-deployment.yaml  
+│   ├── backend-service.yaml  
+│   ├── database-statefulset.yaml  
+│   ├── database-service.yaml  
+│   ├── frontend-deployment.yaml  
+│   ├── frontend-service.yaml  
+│   └── persistent-volume-claim.yaml    
+├── README.md  
+├── explanation.md  
+
+
 ## AOB and Thanks
 ### *I have enjoyed learning DevOps with the TM who has been very helpful.Thank you.* 
