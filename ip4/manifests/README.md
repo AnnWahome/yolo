@@ -66,7 +66,8 @@ kubectl get svc
 ```
 Output
 
-NAME               TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)          AGE
+NAME               TYPE            CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+
 ann-yolo-backend   ClusterIP      34.118.231.122   <none>         5000/TCP         127m
 ann-yolo-client    LoadBalancer   34.118.231.195   34.35.47.192   3000:31990/TCP   127m
 kubernetes         ClusterIP      34.118.224.1     <none>         443/TCP          4h32m
@@ -86,5 +87,5 @@ Access via: http://localhost:5000
 ``` bash
 kubectl port-forward svc/yolo-mongo 27017:27017  
 ```
-Connect to: mongodb://localhost:27017
+Connect to: mongodb: http://localhost:27017 
 
