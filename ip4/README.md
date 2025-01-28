@@ -82,14 +82,16 @@ kubectl get svc ann-yolo-client
 ```
 Access the application at: http://34.35.47.192:3000
 
-1. **Backend API (Local Access):**
+2. **Backend API (Local Access):**
 ``` bash
 kubectl port-forward svc/ann-yolo-backend 5000:5000  
 ```
 Access via: http://localhost:5000
-1. **MongoDB:**
+3. **MongoDB:**
 ``` bash
 kubectl port-forward svc/yolo-mongo 27017:27017  
 ```
 Connect to: mongodb: http://localhost:27017
 
+## Prerequisites  
+The explanation is in the explanation.md file
